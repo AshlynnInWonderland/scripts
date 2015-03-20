@@ -5,11 +5,12 @@
 # The exact command used is:
 # <path to script> "%sname" "%smessage"
 
+# if there's no message, exit (skype sends %smessage as blank when skype is focused and you receive a chat message)
 if [[ -z $2 ]]
 then
   exit
 fi
 
-name="$1\:\ "
+# removes the name from %smessage
 output=${2/$1\:\ /}
 notify-send "Skype - $1" "$output" -i skype
